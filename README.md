@@ -11,6 +11,6 @@ The user needs to provide:
 2.  The grid's boundary positions (top-left and bottom-right block positions)
 3.	A target position in real-world coordinates to convert
 
-Using linear interpolation, the program calculates the equivalent block position by scaling longitude to the grid's X-axis and latitude (inverted north-to-south) to the grid's Z-axis.
+Using linear interpolation, the program calculates the equivalent block position by scaling longitude to the grid's x-axis and latitude (inverted north-to-south) to the grid's z-axis.
 
 This tool helps ensure accurate mapping between real-world locations and virtual grids, making it useful for projects such as building real-world map replicas or visualizing GPS data in a block-based environment.
