@@ -9,7 +9,7 @@ Technical details:
 The user needs to provide:
 1.  The real-world coordinate boundaries (in latitude and longitude format)
 2.  The grid's boundary positions (top-left and bottom-right block positions)
-3.	A target coordinate location in real-world units to convert
+3.	A target position in real-world coordinates to convert
 
 Using linear interpolation, the program calculates the equivalent block position by scaling longitude to the grid's X-axis and latitude (inverted north-to-south) to the grid's Z-axis.
 
