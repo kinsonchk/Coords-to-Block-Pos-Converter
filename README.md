@@ -1,13 +1,13 @@
-To use the program, go to: https://www.online-python.com/5ilPUnbS6h
+To use the program, go to: https://www.onlineide.pro/playground/share/4cf82677-93f9-4465-b8bf-1be14d523054
 
-Video tutorial and explanation: coming soon
+Video tutorial and example walkthrough: https://www.youtube.com/watch?v=wq1AePig_z4
 
 ==========
 
-Technical details:
+Details:
 
 The user needs to provide:
-1.  The real-world coordinate boundaries (in latitude and longitude format)
+1.  The real-world coordinate boundaries (in latitude and longitude decimal degree format) of the area that you're trying to convert
 2.  The grid's boundary positions (top-left and bottom-right block positions)
 3.	A target position in real-world coordinates to convert
 
