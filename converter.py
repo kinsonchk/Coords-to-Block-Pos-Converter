@@ -1,83 +1,48 @@
-print("\n========================================")
-print("-- Coords to Block Position Converter --")
-print("========================================")
-
-print("\n-- Coords (in real life) boundary info --\n")
-
-print("Enter the boundary of the coords in this order: <westernmost>(LONG) <southernmost>(LAT) <easternmost>(LONG) <northernmost>(LAT)")
-print("e.g. -74.0 45.4 -73.4 45.7")
-coords = input("Enter coords boundary: ")
-
-coordBounds = coords.split(' ')
-
-minXstr = coordBounds[0]
-minYstr = coordBounds[1]
-maxXstr = coordBounds[2]
-maxYstr = coordBounds[3]
-
-print("")
-
-minX = float(minXstr)
-minY = float(minYstr)
-maxX = float(maxXstr)
-maxY = float(maxYstr)
-
-print("[ Northwesternmost coords (LAT, LONG): " + maxYstr + ", " + minXstr + " ]")
-print("[ Southeasternmost coords (LAT, LONG): " + minYstr + ", " + maxXstr + " ]")
-
-print("\n==========")
-
-print("\n-- Block (in Minecraft) boundary info --\n")
-
-topLeft = input("Enter the top-left block of the boundary of the map (<x> <z>): ")
-bottomRight = input("Enter the bottom-right block of the boundary of the map (<x> <z>): ")
-
-topLeftStr = topLeft.split(' ')
-leftStr = topLeftStr[0]
-topStr = topLeftStr[1]
-
-bottomRightStr = bottomRight.split(' ')
-rightStr = bottomRightStr[0]
-bottomStr = bottomRightStr[1]
-
-print("")
-
-leftBlock = float(leftStr)
-topBlock = float(topStr)
-rightBlock = float(rightStr)
-bottomBlock = float(bottomStr)
-
-print("[ Map boundary: top-left(" + leftStr + ", " + topStr + ") to bottom-right(" + rightStr + ", " + bottomStr + ") ]")
-
-EWscale = (rightBlock - leftBlock) / (maxX - minX)
-NSscale = (bottomBlock - topBlock) / (maxY - minY)
-
-while True:
-    print("\n==========")
-
-    print("\n-- Desired block position in coords --\n")
-
-    posYstr = input("Enter desired z-block position in Y-coords (LATITUDE, eg. 45.4): ")
-    posXstr = input("Enter desired x-block position in X-coords (LONGITUDE, eg. -74.0): ")
-    
-    print("")
-
-    posX = float(posXstr)
-    posY = float(posYstr)
-
-    print("[ Desired coords position (LAT, LONG): " + posYstr + ", " + posXstr + " ]")
+def convert(min_x_str, min_y_str, max_x_str, max_y_str, left_str, top_str, right_str, bottom_str, pos_y_str, pos_x_str):
 
     print("\n==========")
+    print("\n-- Step 1: Coords (in real life) boundary info --\n")
 
+    min_x = float(min_x_str)
+    min_y = float(min_y_str)
+    max_x = float(max_x_str)
+    max_y = float(max_y_str)
+
+    print("[ Northwesternmost coords (LAT, LONG): " + max_y_str + ", " + min_x_str + " ]")
+    print("[ Southeasternmost coords (LAT, LONG): " + min_y_str + ", " + max_x_str + " ]")
+
+
+    print("\n==========")
+    print("\n-- Step 2: Block (in Minecraft map) boundary info --\n")
+
+    left_block = float(left_str)
+    top_block = float(top_str)
+    right_block = float(right_str)
+    bottom_block = float(bottom_str)
+
+    print("[ Top-left block (X, Z): " + left_str + ", " + top_str + " ]")
+    print("[ Bottom-right block (X, Z): " + right_str + ", " + bottom_str + ") ]")
+
+    ew_scale = (right_block - left_block) / (max_x - min_x)
+    ns_scale = (bottom_block - top_block) / (max_y - min_y)
+
+
+    print("\n==========")
+    print("\n-- Step 3: Target Minecraft block position in real-life coords --\n")
+
+    pos_x = float(pos_x_str)
+    pos_y = float(pos_y_str)
+
+    print("[ Target coords (LAT, LONG): " + pos_y_str + ", " + pos_x_str + " ]")
+
+
+    print("\n==========")
     print("\n-- RESULT --\n")
 
-    blockX = EWscale * (posX - minX) + leftBlock
-    blockZ = NSscale * (maxY - posY) + topBlock
-
-    blockXstr = str(blockX)
-    blockZstr = str(blockZ)
+    block_result_x = ew_scale * (pos_x - min_x) + left_block
+    block_result_z = ns_scale * (max_y - pos_y) + top_block
 
     print("----------------------------------------")
-    print("DESIRED BLOCK POSITION (x, z):\n")
-    print("( " + blockXstr + " , " + blockZstr + " )")
+    print("CONVERTED BLOCK POSITION (X, Z):\n")
+    print(str(block_result_x) + " , " + str(block_result_z))
     print("\n----------------------------------------")

@@ -3,7 +3,7 @@ import sys
 from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 
-#import converter
+import converter
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -87,13 +87,28 @@ class MainWindow(QMainWindow):
         reset_button.clicked.connect(self.clear_fields)
         layout.addWidget(reset_button)
 
-        layout.addWidget(QLabel("Result"))
+        layout.addWidget(QLabel("RESULT"))
+
 
     def convert_coords(self):
-        user_input = self.pos_x_str.text()
-        print(f"Convert coords button clicked with input: {user_input}")
-
+        print("Convert coords button clicked")
+        
+        converter.convert(
+            self.min_x_str.text(),
+            self.min_y_str.text(),
+            self.max_x_str.text(),
+            self.max_y_str.text(),
+            self.left_str.text(),
+            self.top_str.text(),
+            self.right_str.text(),
+            self.bottom_str.text(),
+            self.pos_y_str.text(),
+            self.pos_x_str.text()
+        )
+        
     def clear_fields(self):
+        print("Clear fields button clicked")
+
         self.min_x_str.clear()
         self.min_y_str.clear()
         self.max_x_str.clear()
@@ -104,7 +119,7 @@ class MainWindow(QMainWindow):
         self.bottom_str.clear()
         self.pos_y_str.clear()
         self.pos_x_str.clear()
-        print("Clear fields button clicked")
+        
 
 app = QApplication(sys.argv)
 
