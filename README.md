@@ -24,15 +24,15 @@ This tool helps ensure accurate mapping between real-world locations and virtual
 Sometimes it might be more convenient to use this tool with a graphical user interface. So I have redone the program and implemented a GUI using the PySide6 library (https://pyside.org).
 
 ## To run the app:
-Clone this repository.
+Clone this repository. It is best to run the app in a virtual environment.
 
-It is best to run the app in a virtual environment.
-
-Navigate to the repo directory and use the following Bash commands, in order, to run it.
+Navigate to the repository directory and run the following Bash commands in order:
 ```
 python -m venv .venv
 
 source .venv/bin/activate
+
+pip install -r requirements.txt
 
 python main.py
 ```
