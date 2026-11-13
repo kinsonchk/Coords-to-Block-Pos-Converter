@@ -46,3 +46,5 @@ def convert(min_x_str, min_y_str, max_x_str, max_y_str, left_str, top_str, right
     print("CONVERTED BLOCK POSITION (X, Z):\n")
     print(str(block_result_x) + " , " + str(block_result_z))
     print("\n----------------------------------------")
+
+    return ("Converted block position (X, Z):\n" + str(block_result_x) + " , " + str(block_result_z))
